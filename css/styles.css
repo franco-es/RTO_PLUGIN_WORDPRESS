@@ -1,0 +1,104 @@
+.c-white {
+    color: white;
+}
+
+.c-black {
+    color: #000000;
+}
+
+.c-blue {
+    color: blue;
+}
+
+.c-red {
+    color: red;
+}
+
+.f-monserrat {
+    font-family: 'Montserrat';
+}
+.uppercase{
+    text-transform: uppercase;
+}
+
+.f-xx-large {
+    font-size: xx-large !important;
+}
+
+.f-x-large {
+    font-size: x-large !important;
+}
+.bor-black{
+	border: #000000 !important;
+}
+
+
+/* ESPACIADO */
+
+.m-b-10 {
+    margin-bottom: 1rem !important;
+}
+
+.m-t-10 {
+    margin-top: 1rem !important;
+}
+
+
+/* ALINEACION */
+
+.flex {
+    display: flex !important;
+  	flex-direction: column !important;
+	align-items: flex-start !important;
+    margin: 1rem auto !important;   
+}
+.flex > .center{
+	align-self: center !important;
+}
+.bg-black{
+	border: 1px solid black
+}
+.bg-red{
+	border: 1px solid red
+}
+.bg-green{
+	border: 1px solid green
+}
+
+/* BACKGROUND HOOVER */
+
+.no-hover:hover{
+	background-color: none !important;
+}
+
+/* BORDES */
+
+.br-10 {
+    border-radius: 1rem !important;
+} 
+
+/* tablas */
+
+.tabla{
+    table-layout: fixed;
+    border: none;
+    border-collapse: collapse;
+
+}
+
+
+/* ADMIN PAGE */
+
+.admin{
+    display: flex;
+    margin: auto;
+};
+.b-admin{
+    display: flex;
+    margin: auto;
+    border-radius: .5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
