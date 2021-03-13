@@ -82,32 +82,16 @@ add_shortcode('entry_form', 'entry_form_shortcode');
    ?>
        <table class="tabla" >
        <tr>
+         <td>Estado</td>
+         <td id="estado"></td>
+       </tr>
+       <tr>
          <td>nombre </td>
          <td id="nombre"></td>
        </tr>
        <tr>
          <td>Apellido</td>
          <td id="apellido"></td>
-       </tr>
-       <tr>
-         <td>Email</td>
-         <td id="email"></td>
-       </tr>
-       <tr>
-         <td>telefono</td>
-         <td id="telefono"></td>
-       </tr>
-       <tr>
-         <td>Departamento</td>
-         <td id="departamento"></td>
-       </tr>
-       <tr>
-         <td>Estado</td>
-         <td id="estado"></td>
-       </tr>
-       <tr>
-         <td>Fecha de creacion</td>
-         <td id="fecha_creacion"></td>
        </tr>
        <tr>
          <td>Numero de Turno</td>
@@ -117,51 +101,11 @@ add_shortcode('entry_form', 'entry_form_shortcode');
          <td>Patente</td>
          <td id="patente"></td>
        </tr>
-       <tr>
-         <td>Tipo de Vehiculo</td>
-         <td id="tipo_de_vehiculo"></td>
-       </tr>
-       <tr>
-         <td>Marca</td>
-         <td id="marca"></td>
-       </tr>
-       <tr>
-         <td>Año</td>
-         <td id="anio"></td>
-       </tr>
-       <tr>
-         <td>Combustible</td>
-         <td id="combustible"></td>
-       </tr>
-       <tr>
-         <td>Inscripto en Mendoza</td>
-         <td id="inscripto_en_mendoza"></td>
-       </tr>
-       <tr>
-         <td>Taller</td>
-         <td id="taller"></td>
-       </tr>
      </table>
  <?php
  }
 
 function p_nro_turno(){
-    ?>
-    <div class="wrap">
-      <form class="flex" method="post" id="nro_turno_form">
-        <label class="center f-x-large m-b-10" for="turno">Número de Turno:</label>
-        <input type="text" id="turno" name="turno">
-        <br>
-        <button class="center br-10 m-t-10" type="submit">Consultar</button>
-      </form>
-    </div>
-    <?php tabla_contenido();?>
-    <form class="flex" action="" id="confirmar_turno" method="POST">
-      <input type="hidden" id="nro_turno_confirmar" value="elid" name="turno">
-      <button class="center br-10 m-t-10" type="submit">Confirmar</button>
-
-    </form>
-  <?php
 	$args = array(
 			    'post_type' => 'product',
 			    'posts_per_page' => -1,
@@ -177,7 +121,7 @@ function p_nro_turno(){
 	// Query all products for display them in the select in the backoffice
 	?>
 	<div class="wrap">
-				<h1 class="wp-heading-inline"><?php esc_html_e( 'Ver Números de Turnos (en construccion)' , 'rto_plugin' ); ?></h1>
+				<h1 class="wp-heading-inline"><?php esc_html_e( 'Confirmacion en masa' , 'rto_plugin' ); ?></h1>
 				<div class="mc-wcb-export-box postbox">
 					<form method="post" name="csv_exporter_form" action="" enctype="multipart/form-data">
 						<?php wp_nonce_field( 'export-bookings-bookings_export', '_rto-nonce' ); ?>
@@ -225,6 +169,17 @@ function p_nro_turno(){
 						</form>
 					</div>
 				<?php
+		?>
+    <div class="wrap">
+      <form class="flex" method="post" id="nro_turno_form">
+        <label class="center f-x-large m-b-10" for="turno">Consulta de confirmacion de número de Turno:</label>
+        <input type="text" id="turno" name="turno">
+        <br>
+        <button class="center br-10 m-t-10" type="submit">Consultar</button>
+      </form>
+    </div>
+    <?php tabla_contenido();?>
+  <?php
 }
 function nro_turno_form_shortcode(){
     ob_start();

@@ -14,10 +14,6 @@ jQuery(function ($) {
         event.preventDefault();
         consulta_turno();
       });
-      $("#confirmar_turno").submit(function (event) {
-        event.preventDefault();
-        confirmar_turno();
-      });
       $("#reservar_turno_form").submit(function (event) {
         event.preventDefault();
         redirect();
@@ -136,20 +132,9 @@ jQuery(function ($) {
             //             console.log(response);
             $("#nombre").html(response.nombre);
             $("#apellido").html(response.apellido);
-            $("#email").html(response.email);
-            $("#departamento").html(response.departamento);
-            $("#telefono").html(response.telefono);
             $("#estado").html(response.estado);
-            $("#fecha_creacion").html(response.fecha_creacion);
             $("#nro_turno").html(response.nro_turno);
-            $("#nro_turno_confirmar").val(response.nro_turno);
             $("#patente").html(response.patente);
-            $("#tipo_de_vehiculo").html(response.tipo_de_vehiculo);
-            $("#marca").html(response.marca);
-            $("#anio").html(response.anio);
-            $("#combustible").html(response.combustible);
-            $("#inscripto_en_mendoza").html(response.inscripto_en_mendoza);
-            $("#taller").html(response.taller);
             $("#error").html("");
           }
         },
@@ -159,28 +144,6 @@ jQuery(function ($) {
 
             // alert("numero de turno inexistente");
           },
-        },
-      });
-    }
-
-    function confirmar_turno() {
-      const data = $("#nro_turno_confirmar").serialize();
-      console.log(data);
-      $.ajax({
-        type: "POST",
-        url: confirmTurno,
-        data: data,
-        headers: { Authorization: `Bearer ${token}` },
-        crossDomain: true,
-        dataType: "json",
-        success: function (res) {
-          if (res.status == "success") {
-            const response = res.message;
-            //             console.log(`${response}`)
-            window.location.href = "/turnos";
-          } else {
-            console.log(res.error);
-          }
         },
       });
     }
