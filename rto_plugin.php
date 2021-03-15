@@ -219,6 +219,10 @@ function p_nro_turno(){
       </form>
     </div>
     <?php tabla_contenido();?>
+    <form action="" id="confirm_individual">
+      <input type="hidden" name="turno" value="" id="tunro_a_confirmar">
+       <button class="center br-10 m-t-10" type="submit">Confirmacion individual</button>
+    </form>
   <?php
 }
 function nro_turno_form_shortcode(){
@@ -369,13 +373,10 @@ function p_client_turno(){
     ?>
     <div class="wrap">
       <form class="flex"  method="post" id="client_nro_turno_form" action="<?= get_the_permalink();?>">
-        <label class="center f-x-large m-b-10"  for="turno">Número de Turno:</label>
+        <label class="center f-x-large m-b-10"  for="turno">Ingrese el turno obtenido en rto.mendoza.gov.ar:</label>
         <input class="" type="text" id="turno" name="turno">
         <button class="center br-10 m-t-10" type="submit">Consultar</button>
-		  <p class="center br-10 m-t-10">
-			  ¿No tenes turno? 
-		  </p>
-		<button class="center br-10 m-t-10" id="client-button-get-turn"  type="submit" ><a class="c-white" href="https://rto.mendoza.gov.ar/" target="_blank">Obtener Turno</a> </button>
+		  
       </form>
       <div >
         <p class="" id="error"></p>
@@ -484,6 +485,10 @@ function p_client_turno(){
       <div>
         <p>Numero de turno no encontrado ò equivocado</p>
       </div>
+      <p class="center br-10 m-t-10">
+			  ¿No tenes turno? 
+		  </p>
+		  <button class="center br-10 m-t-10" id="client-button-get-turn"  type="submit" ><a class="c-white" href="https://rto.mendoza.gov.ar/" target="_blank">Obtener Turno</a> </button>
       <?php
     }
   };

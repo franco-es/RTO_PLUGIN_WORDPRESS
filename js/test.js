@@ -14,6 +14,10 @@ jQuery(function ($) {
         event.preventDefault();
         consulta_turno();
       });
+      $("#confirm_individual").submit(function (e) {
+        e.preventDefault();
+        confirm_individual();
+      });
       $("#reservar_turno_form").submit(function (event) {
         event.preventDefault();
         redirect();
@@ -101,6 +105,7 @@ jQuery(function ($) {
             $("#estado").html(response.estado);
             $("#fecha_creacion").html(response.fecha_creacion);
             $("#nro_turno").html(response.nro_turno);
+            $("#tunro_a_confirmar").val(response.nro_turno);
             $("#nro_turno_confirmar").val(response.nro_turno);
             $("#patente").html(response.patente);
             $("#tipo_de_vehiculo").html(response.tipo_de_vehiculo);
@@ -116,6 +121,27 @@ jQuery(function ($) {
           404: function (res) {
             $("#error").html("numero de turno inexistente");
           },
+        },
+      });
+    }
+    function confirm_individual() {
+      const data = $("#tunro_a_confirmar").serialize();
+      $.ajax({
+        type: "POST",
+        url: confirmTurno,
+        data: data,
+        headers: { Authorization: `Bearer ${token}` },
+        crossDomain: true,
+        dataType: "json",
+        success: function (res) {
+          if (res.status == "success") {
+            const response = res.message;
+            alert(response);
+            console.log(response);
+          } else {
+            console.log(res.error);
+            console.log("ocurrio un error");
+          }
         },
       });
     }
