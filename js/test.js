@@ -18,10 +18,6 @@ jQuery(function ($) {
         event.preventDefault();
         redirect();
       });
-      $("#customer_detail").on("load", function (event) {
-        event.preventDefault();
-        loadData();
-      });
       // EVENTOS DEL ARRAY DE TURNOS
       $("#mc-wcb-dates").click(function () {
         $(".mc-wcb-date-picker").toggleClass("visible");
@@ -57,45 +53,12 @@ jQuery(function ($) {
 
     function redirect() {
       var fLetter = $("#auto_o_moto").val();
-      //       console.log(fLetter);
       const letra = fLetter.charAt(0);
-      const nro_turno_booking = $("#nro_turno_booking").val();
-      const nombre_booking = $("#nombre_booking").val();
-      const apellido_booking = $("#apellido_booking").val();
-      const email_booking = $("#email_booking").val();
-      const patente_booking = $("#patente_booking").val();
-      const telefono_booking = $("#telefono_booking").val();
-      localStorage.removeItem("nro_turno");
-      localStorage.removeItem("nombre");
-      localStorage.removeItem("apellido");
-      localStorage.removeItem("telefono");
-      localStorage.removeItem("email");
-      localStorage.removeItem("patente");
-      localStorage.setItem("nro_tunro", nro_turno_booking);
-      localStorage.setItem("nombre", nombre_booking);
-      localStorage.setItem("apellido", apellido_booking);
-      localStorage.setItem("telefono", telefono_booking);
-      localStorage.setItem("email", email_booking);
-      localStorage.setItem("patente", patente_booking);
       if (letra == "M") {
         window.location.href = "/turnos-moto";
       } else {
         window.location.href = "/auto-camioneta-camion/";
       }
-    }
-    function loadData() {
-      const turno = localStorage.getItem("nro_tunro");
-      const nombre = localStorage.getItem("nombre");
-      const apellido = localStorage.getItem("apellido");
-      const patente = localStorage.getItem("patente");
-      const email = localStorage.getItem("email");
-      const telefono = localStorage.getItem("telefono");
-      console.log(turno);
-      $("#billing_first_name").val(turno);
-      $("#billing_last_name").val(patente);
-      $("#billing_company").val(nombre + apellido);
-      $("#billing_phone").val(telefono);
-      $("#billing_email").val(email);
     }
     function login() {
       const data = $("#login_form").serialize();
@@ -132,17 +95,26 @@ jQuery(function ($) {
             //             console.log(response);
             $("#nombre").html(response.nombre);
             $("#apellido").html(response.apellido);
+            $("#email").html(response.email);
+            $("#departamento").html(response.departamento);
+            $("#telefono").html(response.telefono);
             $("#estado").html(response.estado);
+            $("#fecha_creacion").html(response.fecha_creacion);
             $("#nro_turno").html(response.nro_turno);
+            $("#nro_turno_confirmar").val(response.nro_turno);
             $("#patente").html(response.patente);
+            $("#tipo_de_vehiculo").html(response.tipo_de_vehiculo);
+            $("#marca").html(response.marca);
+            $("#anio").html(response.anio);
+            $("#combustible").html(response.combustible);
+            $("#inscripto_en_mendoza").html(response.inscripto_en_mendoza);
+            $("#taller").html(response.taller);
             $("#error").html("");
           }
         },
         statusCode: {
           404: function (res) {
             $("#error").html("numero de turno inexistente");
-
-            // alert("numero de turno inexistente");
           },
         },
       });

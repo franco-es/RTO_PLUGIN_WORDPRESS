@@ -82,10 +82,6 @@ add_shortcode('entry_form', 'entry_form_shortcode');
    ?>
        <table class="tabla" >
        <tr>
-         <td>Estado</td>
-         <td id="estado"></td>
-       </tr>
-       <tr>
          <td>nombre </td>
          <td id="nombre"></td>
        </tr>
@@ -94,12 +90,56 @@ add_shortcode('entry_form', 'entry_form_shortcode');
          <td id="apellido"></td>
        </tr>
        <tr>
+         <td>Email</td>
+         <td id="email"></td>
+       </tr>
+       <tr>
+         <td>telefono</td>
+         <td id="telefono"></td>
+       </tr>
+       <tr>
+         <td>Departamento</td>
+         <td id="departamento"></td>
+       </tr>
+       <tr>
+         <td>Estado</td>
+         <td id="estado"></td>
+       </tr>
+       <tr>
+         <td>Fecha de creacion</td>
+         <td id="fecha_creacion"></td>
+       </tr>
+       <tr>
          <td>Numero de Turno</td>
          <td id="nro_turno"></td>
        </tr>
        <tr>
          <td>Patente</td>
          <td id="patente"></td>
+       </tr>
+       <tr>
+         <td>Tipo de Vehiculo</td>
+         <td id="tipo_de_vehiculo"></td>
+       </tr>
+       <tr>
+         <td>Marca</td>
+         <td id="marca"></td>
+       </tr>
+       <tr>
+         <td>Año</td>
+         <td id="anio"></td>
+       </tr>
+       <tr>
+         <td>Combustible</td>
+         <td id="combustible"></td>
+       </tr>
+       <tr>
+         <td>Inscripto en Mendoza</td>
+         <td id="inscripto_en_mendoza"></td>
+       </tr>
+       <tr>
+         <td>Taller</td>
+         <td id="taller"></td>
        </tr>
      </table>
  <?php
@@ -436,12 +476,6 @@ function p_client_turno(){
       </table>
       <form action="" class="flex" id="reservar_turno_form" method="POST">
       <input type="hidden" id="auto_o_moto" value="<?=$tipo_de_vehiculo?>" name="reserva<?=$tipo_de_vehiculo?>">
-      <input type="hidden" id="nro_turno_booking" value="<?=$nro_turno_booking?>" name="reserva<?=$nro_turno_booking?>">
-      <input type="hidden" id="nombre_booking" value="<?=$nombre_booking?>" name="reserva<?=$nombre_booking?>">
-      <input type="hidden" id="apellido_booking" value="<?=$apellido_booking?>" name="reserva<?=$apellido_booking?>">
-      <input type="hidden" id="email_booking" value="<?=$email_booking?>" name="reserva<?=$email_booking?>">
-      <input type="hidden" id="patente_booking" value="<?=$patente_booking?>" name="reserva<?=$patente_booking?>">
-      <input type="hidden" id="telefono_booking" value="<?=$telefono_booking?>" name="reserva<?=$telefono_booking?>">
       <button class="center br-10 m-t-10" type="submit">Reservar Turno</button>
     </form>
       <?php
