@@ -173,12 +173,15 @@ jQuery(function ($) {
           const bookings = response.data;
           let res = $("#response_booking");
           for (let book of bookings) {
+            const nombre = book.nombre;
+            const apellido = book.apellido;
+            const apellidoNombre = nombre +' '+ apellido;
             res.append(`
 					<tr>
                       <td><input type="checkbox" name="turno" id="checklist" value="${book.turno}"></td>
                       <td>${book.turno}</td>
                       <td>${book.patente}</td>
-                      <td>${book.apellidoNombre}</td>
+                      <td>${apellidoNombre}</td>
                       <td>${book.inicio}</td>
                     </tr>
 				`);
