@@ -110,6 +110,7 @@ jQuery(function ($) {
             $("#patente").html(response.patente);
             $("#tipo_de_vehiculo").html(response.tipo_de_vehiculo);
             $("#marca").html(response.marca);
+            $("#modelo").html(response.modelo);
             $("#anio").html(response.anio);
             $("#combustible").html(response.combustible);
             $("#inscripto_en_mendoza").html(response.inscripto_en_mendoza);

@@ -131,6 +131,10 @@ function tabla_contenido()
       <td id="marca"></td>
     </tr>
     <tr>
+      <td>Modelo</td>
+      <td id="modelo"></td>
+    </tr>
+    <tr>
       <td>Año</td>
       <td id="anio"></td>
     </tr>
@@ -469,6 +473,10 @@ function p_client_turno()
           <tr>
             <td>Marca</td>
             <td id="marca"><?= $clientes['marca'] ?></td>
+          </tr>
+          <tr>
+            <td>Modelo</td>
+            <td id="modelo"><?= $clientes['modelo'] ?></td>
           </tr>
           <tr>
             <td>Año</td>
