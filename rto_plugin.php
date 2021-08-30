@@ -496,7 +496,12 @@ function p_client_turno()
           </tr>
         </table>
         <form action="" class="flex" id="reservar_turno_form" method="POST">
-          <input type="hidden" id="auto_o_moto" value="<?= $tipo_de_vehiculo ?>" name="reserva<?= $tipo_de_vehiculo ?>">
+          <input type="hidden" id="auto_o_moto" value="<?= $nombre_booking ?>" name="reserva-<?= $nombre_booking ?>">
+          <input type="hidden" id="auto_o_moto" value="<?= $apellido_booking ?>" name="reserva-<?= $apellido_booking ?>">
+          <input type="hidden" id="auto_o_moto" value="<?= $email_booking ?>" name="reserva-<?= $email_booking ?>">
+          <input type="hidden" id="auto_o_moto" value="<?= $patente_booking ?>" name="reserva-<?= $patente_booking ?>">
+          <input type="hidden" id="auto_o_moto" value="<?= $nro_turno_booking ?>" name="reserva-<?= $nro_turno_booking ?>">
+          <input type="hidden" id="auto_o_moto" value="<?= $email_booking ?>" name="reserva-<?= $email_booking ?>">
           <button class="center br-10 m-t-10" type="submit">Reservar Turno</button>
         </form>
       <?php

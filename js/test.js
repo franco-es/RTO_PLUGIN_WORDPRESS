@@ -57,11 +57,30 @@ jQuery(function ($) {
 
     function redirect() {
       var fLetter = $("#auto_o_moto").val();
+      //       console.log(fLetter);
       const letra = fLetter.charAt(0);
+      const nro_turno_booking = $("#nro_turno_booking").val();
+      const nombre_booking = $("#nombre_booking").val();
+      const apellido_booking = $("#apellido_booking").val();
+      const email_booking = $("#email_booking").val();
+      const patente_booking = $("#patente_booking").val();
+      const telefono_booking = $("#telefono_booking").val();
+      localStorage.removeItem("nro_turno");
+      localStorage.removeItem("nombre");
+      localStorage.removeItem("apellido");
+      localStorage.removeItem("telefono");
+      localStorage.removeItem("email");
+      localStorage.removeItem("patente");
+      localStorage.setItem("nro_tunro", nro_turno_booking);
+      localStorage.setItem("nombre", nombre_booking);
+      localStorage.setItem("apellido", apellido_booking);
+      localStorage.setItem("telefono", telefono_booking);
+      localStorage.setItem("email", email_booking);
+      localStorage.setItem("patente", patente_booking);
       if (letra == "M") {
-        window.location.href = "/turnos-moto";
+        window.location.href = "/producto/turnos-moto";
       } else {
-        window.location.href = "/auto-camioneta-camion/";
+        window.location.href = "/producto/auto-camioneta-camion/";
       }
     }
     function login() {
@@ -96,7 +115,7 @@ jQuery(function ($) {
         success: function (res) {
           if (res.status == "success") {
             const response = res.turno;
-            //             console.log(response);
+            //console.log(response);
             $("#nombre").html(response.nombre);
             $("#apellido").html(response.apellido);
             $("#email").html(response.email);
@@ -176,7 +195,7 @@ jQuery(function ($) {
           for (let book of bookings) {
             const nombre = book.nombre;
             const apellido = book.apellido;
-            const apellidoNombre = nombre +' '+ apellido;
+            const apellidoNombre = nombre + " " + apellido;
             res.append(`
 					<tr>
                       <td><input type="checkbox" name="turno" id="checklist" value="${book.turno}"></td>
