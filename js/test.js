@@ -6,6 +6,36 @@ jQuery(function ($) {
     const token = localStorage.getItem("token");
 
     jQuery(function ($) {
+      $(document).ready(function () {
+        /**
+         * TOMA DE QUERY DEVUELTA POR RTO.MENDOZA.GOV.AR PARA
+         * EL NRO DE TURNO.
+         *  */
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get("nroturno");
+        $("#turno").text(myParam);
+        if ($("#turno").length == 0) {
+          $("#btn-consulta-turno").trigger("click");
+        }
+
+        /**
+         * TOMA DE DATOS DEL LOCALSTORAGE, PARA COMPLETAR FORMULARIO
+         * DE CHECKOUT DE WOOCOMMERCE.
+         *  */
+        const nombre = localStorage.getItem("nombre");
+        const apellido = localStorage.getItem("apellido");
+        const email = localStorage.getItem("email");
+        const patente = localStorage.getItem("patente");
+        const telefono = localStorage.getItem("telefono");
+        const turno = localStorage.getItem("turno");
+        const token = localStorage.getItem("token");
+        $("#billing_first_name").val(nombre);
+        $("#billing_last_name").val(apellido);
+        $("#billing_company").val(turno);
+        $("#billing_address_2").val(patente);
+        $("#billing_email").val(email);
+        $("#billing_phone").val(telefono);
+      });
       $("#login_form").submit(function (event) {
         event.preventDefault();
         login();
@@ -57,26 +87,23 @@ jQuery(function ($) {
 
     function redirect() {
       var fLetter = $("#auto_o_moto").val();
-      //       console.log(fLetter);
       const letra = fLetter.charAt(0);
-      const nro_turno_booking = $("#nro_turno_booking").val();
-      const nombre_booking = $("#nombre_booking").val();
-      const apellido_booking = $("#apellido_booking").val();
-      const email_booking = $("#email_booking").val();
-      const patente_booking = $("#patente_booking").val();
-      const telefono_booking = $("#telefono_booking").val();
-      localStorage.removeItem("nro_turno");
-      localStorage.removeItem("nombre");
-      localStorage.removeItem("apellido");
-      localStorage.removeItem("telefono");
-      localStorage.removeItem("email");
-      localStorage.removeItem("patente");
-      localStorage.setItem("nro_tunro", nro_turno_booking);
-      localStorage.setItem("nombre", nombre_booking);
-      localStorage.setItem("apellido", apellido_booking);
-      localStorage.setItem("telefono", telefono_booking);
-      localStorage.setItem("email", email_booking);
-      localStorage.setItem("patente", patente_booking);
+      const tipo_vehiculo = $("#tipo_de_vehiculo").text();
+      const nombre = $("#nombre").text();
+      const apellido = $("#apellido").text();
+      const email = $("#email").text();
+      const patente = $("#patente").text();
+      const telefono = $("#telefono").text();
+      const turno = $("#nro_turno").text();
+      const token = $("#tokenRef").text();
+      localStorage.setItem("tipo_vehiculo", tipo_vehiculo);
+      localStorage.setItem("nombre", nombre);
+      localStorage.setItem("apellido", apellido);
+      localStorage.setItem("email", email);
+      localStorage.setItem("patente", patente);
+      localStorage.setItem("telefono", telefono);
+      localStorage.setItem("turno", turno);
+      localStorage.setItem("token", token);
       if (letra == "M") {
         window.location.href = "/producto/turnos-moto";
       } else {
@@ -115,7 +142,7 @@ jQuery(function ($) {
         success: function (res) {
           if (res.status == "success") {
             const response = res.turno;
-            //console.log(response);
+            console.log(response);
             $("#nombre").html(response.nombre);
             $("#apellido").html(response.apellido);
             $("#email").html(response.email);
